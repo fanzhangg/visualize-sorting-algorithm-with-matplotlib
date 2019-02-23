@@ -76,3 +76,33 @@ def count_co_prime(n: int)->list:
         if find_gcd_2(n, x) == 1:
             co_primes.append(x)
     return co_primes
+
+
+def find_palindrome(s: str)->bool:
+    """
+    a palindrome is a word that reads the same forward as it does backward. (i.e. "hannah)
+    :param s:
+    :return:
+    """
+    if len(s) <= 1:
+        return True
+        # remove the first and last char of s if they are same
+    elif s[0] == s[-1]:
+        s = s[1:-1]
+        return find_palindrome(s)
+    else:
+        return False
+
+
+def fib(n: int)-> int:
+    """
+    Fibonacci sequence: starts with 1, 1 and then add the last number to the number preceding ti in the sequence
+    :param n:
+    :return:
+    """
+    if n == 1:
+        return 1
+    elif n == 0:
+        return 0
+    else:
+        return fib(n-1) + fib(n-2)
