@@ -5,10 +5,6 @@ The bubble sort algorithm sorts an unordered list by repeatedly stepping through
 in the wrong order (item bigger than the next one)
 """
 
-matplotlib.use("TkAgg")
-
-plt.ion()
-
 
 def sort(l):
     for i in range(len(l)):
@@ -17,6 +13,9 @@ def sort(l):
                 # swap l[j] and l[j+1]
                 l[j], l[j+1] = l[j+1], l[j]
                 display(l, j, j+1)
+                display_match(l, True, j, j+1)
+            else:
+                display_match(l, False, j, j+1)
     return l
 
 

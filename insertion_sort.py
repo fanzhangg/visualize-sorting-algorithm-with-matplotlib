@@ -5,10 +5,6 @@ The insertion sort algorithm sorts an unordered list by stepping through the lis
 shuffle the other items forward in the list until the correct position is found for the removed item
 """
 
-matplotlib.use("TkAgg")
-
-plt.ion()
-
 
 def sort(l: list)->list:
     for i in range(1, len(l)):
