@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from random import shuffle
 import matplotlib
+import numpy as np
 
 matplotlib.use("TkAgg")
 
@@ -13,9 +14,16 @@ def create_random_list(length):
     return l
 
 
-def display(l, curr=-1, next=-1):
+def display(l, curr=-1, next=-1, color="#1E77B4", x=0):
     plt.clf()
-    bar_l = plt.bar(range(len(l)), l)
+    if not x:
+        x = range(len(l))
+
+    if not len(l) == len(x):
+        l = l + [0] * (len(x) - len(l))
+
+    bar_l = plt.bar(x, l, color=color)
+
     if curr >= 0:
         # change the color of current bar to red
         bar_l[curr].set_color('yellow')
@@ -23,6 +31,31 @@ def display(l, curr=-1, next=-1):
     if next >= 0:
         # change the color of next bar to green
         bar_l[next].set_color('g')
+    axes = plt.gca()
+    axes.set_ylim([0, 10])
+    axes.set_ylabel("Value")
+    axes.set_xlabel("Index")
+
+    plt.xticks(np.arange(0, 10+1, 1))
+    plt.yticks(np.arange(0, 11, 1))
+    plt.draw()
+    plt.pause(0.5)
+
+
+def display_heap(l):
+    plt.clf()
+    c1 = "#84B4D6"
+    c2 = "#468FC1"
+    c3 = "#1C6DA4"
+    c4 = "#144C73"
+    l = l + [0] * (10 - len(l))
+    bar_l = plt.bar(range(10), l, color=[c1] + [c2] * 2 + [c3] * 4 + [c4] * 3)
+    axes = plt.gca()
+    axes.set_ylim([0, 10])
+    axes.set_ylabel("Value")
+    axes.set_xlabel("Index")
+    plt.xticks(np.arange(0, 11, 1))
+    plt.yticks(np.arange(0, 11, 1))
     plt.draw()
     plt.pause(0.5)
 
