@@ -1,6 +1,7 @@
 from heapq import heappush
 from heapq import heappop
 from visualizer import *
+import matplotlib.pyplot as plt
 
 """
 Heapsort algorithm using the module `heapq`
@@ -16,18 +17,35 @@ https://en.wikipedia.org/wiki/Heapsort
 
 def sort(iterable):
     h = []
-    l = []
+    l = iterable
+
+    plt.figure(1)
+    display(l, color="#AF9AB2", x=range(len(iterable)))
+
+    plt.figure(2)
     display_heap(h)
+
+
     for value in iterable:
         # TODO: a[0] is the smallest/biggest?
         # TODO: shift_down() behavior is strange
-        display_heap(h)
+        l = l[1:]
+        plt.figure(1)
+        display(l, color="#AF9AB2", x=range(len(iterable)))
+
         heappush(h, value)
+        plt.figure(2)
+        display_heap(h)
+
 
     display(l, color="#AF9AB2", x=range(len(iterable)))
 
     for i in range(len(h)):
+        plt.figure(1)
         display(l, color="#AF9AB2", x=range(len(iterable)))
+
+        plt.figure(2)
+        display_heap(h)
         value = heappop(h)
         l.append(value)
     return l
