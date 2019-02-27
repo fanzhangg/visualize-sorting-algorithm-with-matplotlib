@@ -20,34 +20,43 @@ def sort(iterable):
     l = iterable
 
     plt.figure(1)
-    display(l, color="#AF9AB2", x=range(len(iterable)))
+    display_list(l)
 
     plt.figure(2)
     display_heap(h)
 
-
     for value in iterable:
-        # TODO: a[0] is the smallest/biggest?
-        # TODO: shift_down() behavior is strange
-        l = l[1:]
+        # Display the list and heap
         plt.figure(1)
-        display(l, color="#AF9AB2", x=range(len(iterable)))
-
-        heappush(h, value)
+        plt.title("List")
+        display_list(l)
         plt.figure(2)
+        plt.title("Heap")
         display_heap(h)
 
+        # remove an item from the list and push to the heap
+        l = l[1:]
+        heappush(h, value)
 
-    display(l, color="#AF9AB2", x=range(len(iterable)))
+    plt.figure(1)
+    display_list(l)
+    plt.figure(2)
+    display_heap(h)
 
     for i in range(len(h)):
-        plt.figure(1)
-        display(l, color="#AF9AB2", x=range(len(iterable)))
-
         plt.figure(2)
         display_heap(h)
+        plt.figure(1)
+        display_list(l)
+
         value = heappop(h)
         l.append(value)
+
+    plt.figure(2)
+    display_heap(h)
+    plt.figure(1)
+    display_list(l)
+
     return l
 
 

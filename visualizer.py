@@ -14,7 +14,7 @@ def create_random_list(length):
     return l
 
 
-def display(l, curr=-1, next=-1, color="#1E77B4", x=0):
+def display(l, curr=-1, next=-1, color="#1E77B4", x=None, title=""):
     plt.clf()
     if not x:
         x = range(len(l))
@@ -32,6 +32,7 @@ def display(l, curr=-1, next=-1, color="#1E77B4", x=0):
         # change the color of next bar to green
         bar_l[next].set_color('g')
     axes = plt.gca()
+    axes.set_title(title)
     axes.set_ylim([0, 10])
     axes.set_ylabel("Value")
     axes.set_xlabel("Index")
@@ -42,15 +43,20 @@ def display(l, curr=-1, next=-1, color="#1E77B4", x=0):
     plt.pause(0.5)
 
 
-def display_heap(l):
+def display_list(l):
+    display(l, color="#AF9AB2", x=range(10), title="List")
+
+
+def display_heap(h):
     plt.clf()
     c1 = "#84B4D6"
     c2 = "#468FC1"
     c3 = "#1C6DA4"
     c4 = "#144C73"
-    l = l + [0] * (10 - len(l))
-    bar_l = plt.bar(range(10), l, color=[c1] + [c2] * 2 + [c3] * 4 + [c4] * 3)
+    h = h + [0] * (10 - len(h))
+    bar_l = plt.bar(range(10), h, color=[c1] + [c2] * 2 + [c3] * 4 + [c4] * 3)
     axes = plt.gca()
+    axes.set_title("Heap")
     axes.set_ylim([0, 10])
     axes.set_ylabel("Value")
     axes.set_xlabel("Index")
